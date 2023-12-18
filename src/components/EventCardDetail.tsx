@@ -28,7 +28,7 @@ const EventCardDetail = ({ club }: ClubCardDetailType) => {
             <div className="dark:bg-gray-800">
                 <div className="max-w ">
                     <div className="flex flex-wrap">
-                        <div className="md:sticky top-0 overflow-hidden w-full h-screen md:w-1/2 flex items-center justify-center flex-col">
+                        <div className="md:sticky top-0 overflow-hidden w-full md:h-1/2 h-screen md:w-1/2 flex items-center justify-center flex-col">
                             <NavBar />
                             <img
                                 className="h-full w-full "
