@@ -12,8 +12,10 @@ const Header = () => {
                     Il browser non supporta questa video
                 </video>
                 <div className="content">
-                    <h1 className="big-title">LookThatParty!</h1>
-                    <p>Prenota ora la tua serata perfetta🕺🏻💃🏻</p>
+                    <h1 className="text-6xl lg:text-9xl">LookThatParty!</h1>
+                    <p className="lg:text-4xl text-3xl mt-9">
+                        Prenota ora la tua serata perfetta🕺🏻💃🏻
+                    </p>
                 </div>
             </header>
         </>

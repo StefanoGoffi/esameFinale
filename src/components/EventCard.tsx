@@ -26,7 +26,7 @@ const EventCard = ({ club, goToDetail }: ClubCardType) => {
             className="flex flex-col bg-white border border-gray-200 rounded-lg shadow-md  dark:border-gray-700 dark:bg-gray-800 mb-4"
         >
             <img
-                className="object-cover w-1/2 h-1/2 md:h-auto md:w-1/2"
+                className="object-cover w-full h-1/2 md:h-auto md:w-1/2"
                 src={coverImage}
                 alt={`${name} poster`}
             />
