@@ -1,1 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap");
+.slide-in-left {
+    opacity: 0;
+    // transform: translateX(-100%);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+.slide-in-right {
+    opacity: 0;
+    // transform: translateX(100%);
+    transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+}
+.slide-in-left.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+.slide-in-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}

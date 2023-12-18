@@ -4,8 +4,10 @@ import {
     Navigate,
 } from "react-router-dom";
 import "./App.scss";
-import HomePage from "./pages/HomePage";
+import { Suspense, lazy } from "react";
 import DetailsPage from "./pages/DetailsPage";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
 const router = createBrowserRouter([
     {
         path: "/home",
@@ -21,6 +23,10 @@ const router = createBrowserRouter([
     },
 ]);
 function App() {
-    return <RouterProvider router={router} />;
+    return (
+        <Suspense fallback={<p>loading</p>}>
+            <RouterProvider router={router} />
+        </Suspense>
+    );
 }
 export default App;

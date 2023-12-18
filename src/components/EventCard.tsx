@@ -3,13 +3,41 @@ import { HashLink } from "react-router-hash-link";
 import { EventType } from "../repo/event.types";
 import "./EventCard.scss";
 import { Logics } from "../logics/Logics";
+import { useEffect } from "react";
 type ClubCardType = {
     club: EventType;
     goToDetail: string;
 };
 const Logica = new Logics();
+
 const EventCard = ({ club, goToDetail }: ClubCardType) => {
+    useEffect(() => {
+        const slideIn = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                } else {
+                    entry.target.classList.remove("active");
+                }
+            });
+        };
+        const slideInLeft =
+            document.querySelectorAll<HTMLElement>(".slide-in-left");
+        const slideInRight =
+            document.querySelectorAll<HTMLElement>(".slide-in-right");
+
+        const slideInLeftObserver = new IntersectionObserver(slideIn);
+        const slideInRightObserver = new IntersectionObserver(slideIn);
+
+        slideInLeft.forEach((element) => {
+            slideInLeftObserver.observe(element);
+        });
+        slideInRight.forEach((element) => {
+            slideInRightObserver.observe(element);
+        });
+    }, []);
     const {
+        id,
         name,
         includedDrinks,
         tags,
@@ -23,7 +51,9 @@ const EventCard = ({ club, goToDetail }: ClubCardType) => {
     return (
         <div
             id="card"
-            className="flex flex-col bg-white border border-gray-200 rounded-lg shadow-md  dark:border-gray-700 dark:bg-gray-800 mb-4"
+            className={`${
+                id % 2 === 0 ? "slide-in-left " : "slide-in-right "
+            }flex flex-col bg-white border border-gray-200 rounded-lg shadow-md  dark:border-gray-700 dark:bg-gray-800 mb-4`}
         >
             <img
                 className="object-cover w-full h-1/2 md:h-auto md:w-1/2"
@@ -38,8 +68,8 @@ const EventCard = ({ club, goToDetail }: ClubCardType) => {
                     {description.short}
                 </p>
                 <div className="flex flex-col">
-                    <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center mr-4">
+                    <div className="flex items-center justify-center mb-2">
+                        <div className="w-1/3 flex justify-center items-center mr-4">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -59,7 +89,7 @@ const EventCard = ({ club, goToDetail }: ClubCardType) => {
                             </span>
                             <span className="text-xl text-gray-300"></span>
                         </div>
-                        <div className="flex items-center mr-4">
+                        <div className="w-1/3 flex justify-center items-center mr-4">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -79,7 +109,7 @@ const EventCard = ({ club, goToDetail }: ClubCardType) => {
                                 <span className="text-green-400">$</span>
                             </span>
                         </div>
-                        <div className="flex items-center mr-4">
+                        <div className="w-1/3 flex justify-center items-center mr-4">
                             <span className="text-xl ml-2 text-gray-300">
                                 {isAperitivoIncluded ? (
                                     <div title="Aperitivo Incluso">🍻✅</div>
