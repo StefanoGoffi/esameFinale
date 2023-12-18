@@ -16,7 +16,7 @@ const router = createBrowserRouter([
         element: <DetailsPage />,
     },
     {
-        path: "**",
+        path: "*",
         element: <Navigate to="/home" />,
     },
 ]);
